@@ -45,6 +45,11 @@ p_global <- filtered_grouped_data %>%
 
 export(p_global, file = "global.png")
 
+fonts <- list(
+  family = "sans serif",
+  size = 22,
+  color = 'black')
+
 p_us_only <- clean_data %>%
   filter(Country == 'United States') %>%
   group_by(state) %>%
@@ -54,10 +59,13 @@ p_us_only <- clean_data %>%
     z = ~number_of_incidents, color = ~number_of_incidents, colors = 'YlGnBu',
     text = ~state, locations = ~state
   ) %>%
-  colorbar(title = 'Number of incidents reported') %>%
+  colorbar(title = 'Number of incidents reported',
+          #x = -0.05,
+          y = 0.8) %>%
   layout(
-    title = glue("Reported wildlife incidents between {format(min(clean_data$incident_date), '%B %Y')} and {format(max(clean_data$incident_date), '%B %Y')}"
+    title = glue("<br>Reported wildlife incidents between {format(min(clean_data$incident_date), '%B %Y')} and {format(max(clean_data$incident_date), '%B %Y')}"
     ),
+    font=fonts,
     geo = list(scope = 'usa')) 
 
 export(p_us_only, file = "us_only.png")
