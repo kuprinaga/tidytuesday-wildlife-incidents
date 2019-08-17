@@ -43,9 +43,10 @@ p_global <- filtered_grouped_data %>%
     z = ~number_of_incidents, color = ~number_of_incidents, colors = 'YlGnBu',
     text = ~Country_code, locations = ~Country_code
   ) %>%
-  colorbar(title = 'Number of incidents reported') %>%
+  colorbar(title = 'Number of incidents reported',
+           y = 0.8) %>%
   layout(
-    title = glue("Reported wildlife incidents between {format(min(clean_data$incident_date), '%B %Y')} and {format(max(clean_data$incident_date), '%B %Y')}"
+    title = glue("<br>Reported wildlife incidents between {format(min(clean_data$incident_date), '%B %Y')} and {format(max(clean_data$incident_date), '%B %Y')}"
         ),
     font=fonts) 
 
