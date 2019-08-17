@@ -32,6 +32,11 @@ filtered_grouped_data <- clean_data %>%
 
 
 
+fonts <- list(
+  family = "sans serif",
+  size = 22,
+  color = 'black')
+
 p_global <- filtered_grouped_data %>%
   plot_geo() %>%
   add_trace(
@@ -41,14 +46,11 @@ p_global <- filtered_grouped_data %>%
   colorbar(title = 'Number of incidents reported') %>%
   layout(
     title = glue("Reported wildlife incidents between {format(min(clean_data$incident_date), '%B %Y')} and {format(max(clean_data$incident_date), '%B %Y')}"
-        )) 
+        ),
+    font=fonts) 
 
 export(p_global, file = "global.png")
 
-fonts <- list(
-  family = "sans serif",
-  size = 22,
-  color = 'black')
 
 p_us_only <- clean_data %>%
   filter(Country == 'United States') %>%
