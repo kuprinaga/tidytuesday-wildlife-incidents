@@ -60,5 +60,5 @@ p_us_only <- clean_data %>%
     ),
     geo = list(scope = 'usa')) 
 
-export(p_us_only, file = "global.png")
+export(p_us_only, file = "us_only.png")
 
